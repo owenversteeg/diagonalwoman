@@ -1,13 +1,19 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
 	</head>
 	<body>
-		Dimensions of rectangle: <input type="text" id="dimensions"></input>
+		<style type="text/css">
+			#graphCanvas {
+				-webkit-transform: rotateX(-180deg);
+			}
+		</style>
+		Dimensions of rectangle: <input type="text" id="dimensions" value="4,5"></input>
 		<br>
-		Slope: <input type="text" id="slope"></input>
-		<button onclick="calculateSquaresPassedThrough(document.getElementById('dimensions').value.split(','),ctx,20,parseFloat(document.getElementById('slope').value))">Calculate</button>
+		Slope: <input type="text" id="slope" value="2"></input>
+		<br>
+		Scale: <input type="text" id="scale" value="1"></input>
+		<button onclick="calculateSquaresPassedThrough(document.getElementById('dimensions').value.split(','),ctx,parseFloat(document.getElementById('scale').value)*20,eval(document.getElementById('slope').value))">Calculate</button>
 		<br><br>
 		<script type="text/javascript" src="ratio.js"></script>
 
