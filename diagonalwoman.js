@@ -17,7 +17,7 @@ function getPrecision(numbers) {
 }
 
 var canvas,ctx;
-function makeCanvas() {
+function makeCanvas(canvasScale) {
 	if (document) {
 		if (document.getElementById('graphCanvas')) {
 			document.getElementById('graphCanvas').parentElement.removeChild(document.getElementById('graphCanvas'))
@@ -31,8 +31,9 @@ function makeCanvas() {
 
 		ctx = canvas.getContext("2d");
 	}
+	//canvas.style.left = (canvasScale/20)*10 + "px";
 }
-makeCanvas();
+makeCanvas(20);
 
 /* Plan
 
@@ -71,6 +72,9 @@ function round(num, places) {
 }
 
 function calculateSquaresPassedThrough(dimensions, drawCanvas, canvasScale, slope) {
+	makeCanvas(canvasScale);
+
+	drawCanvas = ctx;
 /*	var step = 1/slope;
 
 	if (step < 1) {
@@ -94,10 +98,12 @@ function calculateSquaresPassedThrough(dimensions, drawCanvas, canvasScale, slop
 
 	}
 */
+
 	var step = 1/getDenominator(1/slope);
 
 	//reset the canvas
-	canvas.width=canvas.width;
+	canvas.width=dimensions[0]*canvasScale;
+	canvas.height=dimensions[1]*canvasScale;
 
 	//plot a grid
 	for (var x=0; x<dimensions[0]; x++) {
@@ -155,8 +161,8 @@ function drawLine(dimensions, lastPoint, drawCanvas, ctx, canvasScale, slope, st
 		//if (x==4) alert(x*slope*step + yIcept/canvasScale);
 		if (dimensions[1] == round(x*slope*step + yIcept/canvasScale,5) || round(x*slope*step + yIcept/canvasScale,5) == 0) {
 			var pos;
-			if (dimensions[1] == x*slope*step + yIcept/canvasScale) { pos = "bottom"; }
-			else { pos="top"; }
+			if (dimensions[1] == x*slope*step + yIcept/canvasScale) { pos = "top"; }
+			else { pos="bottom"; }
 
 			if (lastPoint[0] == 0) { pos += " left"; }
 			else if (dimensions[0] == x*step) { pos += " right"; }
