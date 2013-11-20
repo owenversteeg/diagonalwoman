@@ -44,7 +44,7 @@ function calculateSquaresPassedThrough(dimensions, drawCanvas, canvasScale, slop
 
 	drawCanvas = ctx;
 
-	if (slope.toString().indexOf('.') == -1) {
+	if (slope.toString().indexOf('.') != -1) {
 		var step = 1/getDenominator(1/slope);
 	} else {
 		var step = 1/slope;
