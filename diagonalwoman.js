@@ -1,3 +1,5 @@
+mixpanel.track('Page load');
+
 var data_url, binary_gif, canvas, ctx, encoder;
 
 function getDenominator(floatingPointNumber) {
@@ -31,6 +33,7 @@ function round(num, places) {
 }
 
 function calculateSquaresPassedThrough(dimensions, drawCanvas, canvasScale, slope, makeGif, drawColor) {
+	mixpanel.track('Calculate', {"createGif": makeGif, "slope": slope, "color": drawColor, "scale": canvasScale, "height": dimensions[1], "width": dimensions[0]});
 	if (makeGif) {
 		encoder = new GIFEncoder();
 		encoder.setRepeat(0);
