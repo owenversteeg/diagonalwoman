@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>DiagonalWoman Grapher</title>
+		<script type="text/javascript" src="LZWEncoder.js"></script>
+		<script type="text/javascript" src="NeuQuant.js"></script>
+		<script type="text/javascript" src="GIFEncoder.js"></script>
+		<script type="text/javascript" src="b64.js"></script>
+		<script type="text/javascript" src="download.js"></script>
 	</head>
 	<body>
 		<style type="text/css">
@@ -9,12 +13,18 @@
 				-webkit-transform: rotateX(-180deg);
 			}
 		</style>
+		<input type="checkbox" id="yesGif" value="Create gif" checked>Create animated gif (warning: <em>very</em> slow for large numbers of bounces)<br>
 		Dimensions of rectangle: <input type="text" id="dimensions" value="4,5"></input>
 		<br>
 		Slope: <input type="text" id="slope" value="2"></input>
 		<br>
 		Scale: <input type="text" id="scale" value="1"></input>
-		<button onclick="calculateSquaresPassedThrough(document.getElementById('dimensions').value.split(','),ctx,parseFloat(document.getElementById('scale').value)*20,eval(document.getElementById('slope').value))">Calculate</button>
+		<br>
+		Color: <input type="text" id="whatColor" value="red"></input>
+		<br>
+		<img id="gif" src="" alt="Animated gif">
+		<br>
+		<button onclick="calculateSquaresPassedThrough(document.getElementById('dimensions').value.split(','),ctx,parseFloat(document.getElementById('scale').value)*20,eval(document.getElementById('slope').value), document.getElementById('yesGif').checked, document.getElementById('whatColor').value)">Calculate</button>
 		<br><br>
 		<script type="text/javascript" src="ratio.js"></script>
 
