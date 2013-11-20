@@ -24,6 +24,8 @@
 		<br>
 		<img id="gif" src="" alt="Animated gif">
 		<br>
+		<button onclick="if (document.getElementById('gif').src.length > 100) {downloadFile(document.getElementById('gif').src,'gif') } else { alert('There\'s no gif to download!') }">Download gif</button>
+		<br>
 		<button onclick="calculateSquaresPassedThrough(document.getElementById('dimensions').value.split(','),ctx,parseFloat(document.getElementById('scale').value)*20,eval(document.getElementById('slope').value), document.getElementById('yesGif').checked, document.getElementById('whatColor').value)">Calculate</button>
 		<br><br>
 		<script type="text/javascript" src="ratio.js"></script>
